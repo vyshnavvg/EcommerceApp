@@ -1,3 +1,4 @@
+using API.Middleware;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,15 @@ builder.Services.AddDbContext<StoreContext>(opt => {
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddCors();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExecptionMiddleware>(); // Middleware for error handling -> It send the request to the next thing and something breaks it come back and execption gets caught
+
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
+    .WithOrigins("https://localhost:4200","https://localhost4200"));
 
 app.MapControllers();
 
