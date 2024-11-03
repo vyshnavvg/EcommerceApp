@@ -5,11 +5,11 @@ using API.Errors;
 
 namespace API.Middleware;
 
-public class ExecptionMiddleware
+public class ExceptionMiddleware
 {
-    RequestDelegate next;
-    IHostEnvironment env;
-    public ExecptionMiddleware(IHostEnvironment env, RequestDelegate next)
+    private readonly RequestDelegate next;
+    private readonly IHostEnvironment env;
+    public ExceptionMiddleware(IHostEnvironment env, RequestDelegate next)
     {   
         this.next = next;
         this.env = env;
