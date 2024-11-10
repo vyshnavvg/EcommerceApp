@@ -22,7 +22,7 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>(); // Middleware for error handling -> It send the request to the next thing and something breaks it come back and execption gets caught
 
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
-    .WithOrigins("http://localhost:4200","https://localhost4200"));
+    .WithOrigins("http://localhost:4200","https://localhost:4200"));
 
 app.MapControllers();
 
