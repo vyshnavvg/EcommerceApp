@@ -1,8 +1,18 @@
 services:
-  sql:
-    image: mcr.microsoft.com/azure-sql-edge
-    environment:
-      ACCEPT_EULA: "1"
-      MSSQL_SA_PASSWORD: "Password@1"
+  # sql:
+  #   image: mcr.microsoft.com/azure-sql-edge
+  #   environment:
+  #     ACCEPT_EULA: "1"
+  #     MSSQL_SA_PASSWORD: "Password@1"
+  #   ports:
+  #     - "1433:1433"
+  redis:
+    image: redis:latest
     ports:
-      - "1433:1433"
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
+  
