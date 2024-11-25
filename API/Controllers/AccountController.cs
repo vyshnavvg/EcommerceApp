@@ -69,7 +69,7 @@ public class AccountController : BaseApiController
         });
     }
 
-    [HttpGet]
+    [HttpGet("auth-status")]
     public ActionResult GetAuthState()
     {
         return Ok(new {
