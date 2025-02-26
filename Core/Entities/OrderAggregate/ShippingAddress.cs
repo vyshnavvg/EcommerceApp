@@ -1,6 +1,6 @@
 ﻿namespace Core.Entities.OrderAggregate
 {
-    internal class ShippingAddress
+    public class ShippingAddress
     {
         public required string Name { get; set; }
         public required string Line1 { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Core.Entities.OrderAggregate
 {
-    internal class OrderItem : BaseEntity
+    public class OrderItem : BaseEntity
     {
         public ProductItemOrdered ItemOrdered { get; set; } = null!;
         public decimal Price { get; set; }
