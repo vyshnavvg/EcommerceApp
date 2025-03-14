@@ -10,7 +10,7 @@
                 [checked]="cartService.selectedDelivery() === method"
                 [value]="method">
                     <div class="flex flex-col w-full h-full">
-                        <strong>{{ method.shortName }} - {{ method.price | currency }}</strong>
+                        <strong>{{ method.shortName }} - {{ method.price | currency: 'INR' }}</strong>
                         <span class="text-sm">{{ method.description }}</span>
                     </div>
                 </mat-radio-button>

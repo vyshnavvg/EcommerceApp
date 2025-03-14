@@ -22,11 +22,10 @@
                             </div>
                         </td>
                         <td class="p-4">x{{item.quantity}}</td>
-                        <td class="p-4">{{item.price | currency}}</td>
+                        <td class="p-4">{{item.price | currency: 'INR' }}</td>
                     </tr>
                 }
             </tbody>
-
         </table>
     </div>
 </div>

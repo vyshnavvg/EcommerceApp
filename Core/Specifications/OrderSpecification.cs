@@ -16,5 +16,12 @@ namespace Core.Specifications
             AddInculde("orderItems");
             AddInculde("DeliveryMethod");
         }
+
+        public OrderSpecification(string paymentIntentId, bool isPaymentIntent) :
+            base(x => x.PaymentIntentId == paymentIntentId)
+        {
+            AddInculde("orderItems");
+            AddInculde("DeliveryMethod");
+        }
     }
 }
