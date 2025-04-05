@@ -1,4 +1,3 @@
-using System;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -46,10 +45,13 @@ public class PaymentService(IConfiguration config, ICartService cartService,
             {
                 var options = new PaymentIntentCreateOptions
                 {
-                    Amount = (long) cart.Items.Sum(x => x.Quantity * (x.Price *100))
-                         + (long) shippingPrice * 100,
+                    Amount = (long)cart.Items.Sum(x => x.Quantity * (x.Price * 100))
+                         + (long)shippingPrice * 100,
                     Currency = "usd",
-                    PaymentMethodTypes = ["card"]
+                    PaymentMethodTypes = ["card"],
+                    Description = "Items purchased: " + cart.Items.Count.ToString() +
+                                  "Total Cost: " + (long)cart.Items.Sum(x => x.Quantity * (x.Price * 100))
+                                  + (long)shippingPrice * 100
                 };
                 
                 intent = await service.CreateAsync(options);
@@ -62,6 +64,9 @@ public class PaymentService(IConfiguration config, ICartService cartService,
                 {
                     Amount = (long) cart.Items.Sum(x => x.Quantity * (x.Price *100))
                          + (long) shippingPrice * 100,
+                    Description = "Items purchased: " + cart.Items.Count.ToString() +
+                                  " Total Cost: " + (long)cart.Items.Sum(x => x.Quantity * (x.Price * 100))
+                                  + (long)shippingPrice * 100
                 };
                 intent = await service.UpdateAsync(cart.PaymentIntentId, options);
             }            
